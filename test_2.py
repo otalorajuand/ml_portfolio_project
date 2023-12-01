@@ -1,6 +1,4 @@
 import os
-import pickle
-import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import (
     SystemMessage,
@@ -21,12 +19,6 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY") or OPENAI_API_KEY
 chat = ChatOpenAI(
     openai_api_key=os.environ["OPENAI_API_KEY"],
     model='gpt-3.5-turbo'
-)
-
-
-dataset = load_dataset(
-    "otalorajuand/data_house_museum",
-    split="train"
 )
 
 
@@ -55,31 +47,7 @@ index = pinecone.Index(index_name)
 
 embed_model = OpenAIEmbeddings(model="text-embedding-ada-002")
 
-data = dataset.to_pandas()  # this makes it easier to iterate over the dataset
-
-batch_size = 100
-
-for i in tqdm(range(0, len(data), batch_size)):
-    i_end = min(len(data), i+batch_size)
-    # get batch of data
-    batch = data.iloc[i:i_end]
-    # generate unique ids for each chunk
-    ids = [f"{x['id']}" for i, x in batch.iterrows()]
-    # get text to embed
-    texts = [x['text_chunk'] for _, x in batch.iterrows()]
-    # embed text
-    embeds = embed_model.embed_documents(texts)
-    # get metadata to store in Pinecone
-    metadata = [
-        {'text': x['text_chunk'],
-         'title': x['title']} for i, x in batch.iterrows()
-    ]
-    # add to Pinecone
-    index.upsert(vectors=zip(ids, embeds, metadata))
-
-
-    text_field = "text"  # the metadata field that contains our text
-
+text_field = "text"
 # initialize the vector store object
 vectorstore = Pinecone(
     index, embed_model.embed_query, text_field
