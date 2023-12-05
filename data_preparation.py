@@ -20,7 +20,7 @@ def augment_prompt(query: str):
     output = query_generator([query])
 
     query_embeddings = torch.FloatTensor(output)
-    hits = semantic_search(query_embeddings, dataset_embeddings, top_k=6)
+    hits = semantic_search(query_embeddings, dataset_embeddings, top_k=3)
     selected_rows = [hits[0][i]['corpus_id'] for i in range(len(hits[0]))]
     results = dataset_santuario.loc[selected_rows, ['new_column']].values.tolist()
     # get the text from the results
@@ -32,14 +32,10 @@ def augment_prompt(query: str):
 
     Contexto:
     {source_knowledge}
-
-    Consulta: """
-    augmented_prompt = augmented_prompt.replace("{", "")
-    augmented_prompt = augmented_prompt.replace("}", "")
-    final_prompt = PromptTemplate(
-        input_variables=["question"],
-        template = augmented_prompt + "{question}")
-    return final_prompt
+    
+    Pregunta:
+    {query}"""
+    return augmented_prompt
 
 dataset_santuario = load_dataset('otalorajuand/data_house_museum', split="train").to_pandas()
 
