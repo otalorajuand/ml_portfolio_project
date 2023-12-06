@@ -1,12 +1,14 @@
 import requests
+import os
 from datasets import load_dataset
+from dotenv import load_dotenv
 import torch
 from sentence_transformers.util import semantic_search
-from langchain.prompts import PromptTemplate
 
 
+load_dotenv()
+hf_token = os.getenv('HF_TOKEN')
 model_id = "sentence-transformers/all-MiniLM-L6-v2"
-hf_token = "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"
 
 api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_id}"
 headers = {"Authorization": f"Bearer {hf_token}"}

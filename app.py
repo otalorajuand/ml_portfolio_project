@@ -1,26 +1,25 @@
 import streamlit as st
+import os
 from dotenv import load_dotenv
 from tqdm.auto import tqdm
 from data_preparation import augment_prompt, dataset_embeddings, dataset_santuario
-from langchain import HuggingFaceHub, LLMChain
+import requests
 
 
 load_dotenv()
+hf_token = os.getenv('HF_TOKEN')
 
-repo_id = "tiiuae/falcon-7b"
+API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.1"
+headers = {"Authorization": f"Bearer {hf_token}"}
 
-llm = HuggingFaceHub(
-    repo_id=repo_id, model_kwargs={"temperature": 0.3, "max_length": 252}
-)
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
+ 
 
-message = "Qué es el baratón?"
+model_kwargs = {"max_new_tokens": 512, "top_p": 0.8, "temperature": 0.3}
 
-prompt = augment_prompt(message)
-print(prompt)
-#llm_chain = LLMChain(prompt=prompt, llm=llm)
-print#(llm_chain.run(message))
 
-"""
 # 5. Build an app with streamlit
 def main():
     st.set_page_config(
@@ -33,14 +32,15 @@ def main():
         st.write("Generando respuesta...")
 
         prompt = augment_prompt(message)
-        llm_chain = LLMChain(prompt=prompt, llm=llm)
+        output = query({
+	        "inputs": prompt,
+            "parameters": {**model_kwargs}
+        })
 
         # add to messages
-        result = llm_chain.run(message)
+        result = output[0]['generated_text'][len(prompt)+1:]
 
         st.info(result)
 
 if __name__ == '__main__':
     main()
-
-    """
