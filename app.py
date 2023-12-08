@@ -11,7 +11,7 @@ from output_generator import output_generator
 # 5. Build an app with streamlit
 def run_app():    
 
-    st.header("QA Casa museo :bird:")
+    st.header("Pregúntale a la Casa museo El Santuario :bird:")
     message = st.text_area("Escribe tu pregunta...")
 
     if st.button("Generar respuesta"):

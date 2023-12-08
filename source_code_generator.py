@@ -31,7 +31,9 @@ def source_knowledge_generator(embedded_query, embeddings_dataset, top_k, datase
     selected_rows = [hits[0][i]['corpus_id'] for i in range(len(hits[0]))]
     results = dataset.loc[selected_rows, [
         'new_column']].values.tolist()
+    documents = dataset.loc[selected_rows, [
+        'title']].values.tolist()
     # get the text from the results
     source_knowledge = "\n".join([x[0] for x in results])
 
-    return source_knowledge
+    return source_knowledge, documents
