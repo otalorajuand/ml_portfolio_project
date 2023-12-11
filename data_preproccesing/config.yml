@@ -1,0 +1,8 @@
+# name of the embedding model
+model_name: "sentence-transformers/all-MiniLM-L6-v2"
+
+
+#parameters for process_data file
+directory_path: '/Users/otalorajuand/Desktop/data-santuario'
+max_chunk_size: 2000
+min_chunk_size: 100
