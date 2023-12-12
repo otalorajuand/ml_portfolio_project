@@ -69,8 +69,6 @@ def source_knowledge_generator(embedded_query,
     """
 
     # source_knowledge generation
-    print(embedded_query)
-    st.write(embedded_query)
     query_embeddings = torch.FloatTensor(embedded_query)
     hits = semantic_search(query_embeddings, embeddings_dataset, top_k=top_k)
     selected_rows = [hits[0][i]['corpus_id'] for i in range(len(hits[0]))]
