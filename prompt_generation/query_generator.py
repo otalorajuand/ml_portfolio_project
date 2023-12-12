@@ -1,12 +1,9 @@
 import requests
-import os
-from dotenv import load_dotenv
+import streamlit as st
 import yaml
 
 with open('prompt_generation/config.yml', 'r') as file:
     config = yaml.safe_load(file)
-
-load_dotenv()
 
 
 def query_generator(texts: list):
@@ -21,7 +18,7 @@ def query_generator(texts: list):
     - response.json(): the JSON response containing the generated embeddings
     """
 
-    hf_token = os.getenv('HF_TOKEN')
+    hf_token = st.secrets["HF_TOKEN"]
     model_name = config['embedding_model_name']
     api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_name}"
     headers = {"Authorization": f"Bearer {hf_token}"}

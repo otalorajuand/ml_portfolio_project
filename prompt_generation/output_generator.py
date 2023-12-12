@@ -1,12 +1,9 @@
 import requests
-import os
 import streamlit as st
-from dotenv import load_dotenv
 import yaml
 
 
-load_dotenv()
-hf_token = os.getenv('HF_TOKEN')
+hf_token = st.secrets['HF_TOKEN']
 
 with open('prompt_generation/config.yml', 'r') as file:
     config = yaml.safe_load(file)
