@@ -30,15 +30,20 @@ if prompt := st.chat_input("Haznos una pregunta"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
+        stop = 0
         message_placeholder = st.empty()
         full_response = ""
         with st.spinner("Generando respuesta..."):
             augment_prompt, documents = augment_prompt_generator(prompt)
             output = output_generator(augment_prompt)
             try:
-                assistant_response = output[0]["generated_text"][len(augment_prompt) + 1:]
+                assistant_response = output[0]["generated_text"][len(augment_prompt)+1:]
             except:
-                st.error('Revisa tu conexión a internet. Intentalo más tarde.')
+                st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
+                stop = 1
+
+        if stop == 1:
+            st.stop()
 
         # Simulate stream of response with milliseconds delay
         for chunk in assistant_response.split():

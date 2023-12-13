@@ -6,7 +6,7 @@ model_name: "mistralai/Mistral-7B-Instruct-v0.1"
 
 #model parameters
 model_params: 
-  max_new_tokens: 250 
+  max_new_tokens: 512
   top_p: 0.5
   temperature: 0.2
   repetition_penalty: 1.2
