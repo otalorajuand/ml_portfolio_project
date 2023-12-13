@@ -1,5 +1,6 @@
 from prompt_generation.source_code_generator import source_knowledge_generator, dataset_embbedings_generator, load_data
 from prompt_generation.query_generator import query_generator
+import streamlit as st
 import yaml
 
 with open('prompt_generation/config.yml', 'r') as file:
@@ -7,7 +8,11 @@ with open('prompt_generation/config.yml', 'r') as file:
 
 top_k = config['top_k']
 
-dataset = load_data()
+try:
+  dataset = load_data()
+except:
+   st.stop()
+
 dataset_embeddings = dataset_embbedings_generator(dataset)
 
 
