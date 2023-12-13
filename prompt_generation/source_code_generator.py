@@ -77,7 +77,7 @@ def source_knowledge_generator(embedded_query,
     documents = dataset.loc[selected_rows, [
         'title']].values.tolist()
     # get the text from the results
-    source_knowledge = "\n".join([x[0] for x in results])
+    source_knowledge = "\n\n".join([x[0] for x in results])
 
     unique_documents = list(set([x[0].replace(".pdf", "") for x in documents]))
     documents_list = "\n".join([f"• {item}" for item in unique_documents])
