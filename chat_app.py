@@ -34,6 +34,7 @@ if prompt := st.chat_input("Haznos una pregunta"):
         with st.spinner("Generando respuesta..."):
             augment_prompt, documents = augment_prompt_generator(prompt)
             output = output_generator(augment_prompt)
+            st.write(output)
             assistant_response = output[0]["generated_text"][len(augment_prompt) + 1:]
 
         # Simulate stream of response with milliseconds delay
