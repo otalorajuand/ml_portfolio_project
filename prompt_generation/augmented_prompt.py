@@ -36,17 +36,18 @@ def augment_prompt_generator(query: str):
         embedded_query, dataset_embeddings, top_k, dataset)
 
     # feed into an augmented prompt
-    augmented_prompt = f"""Utilizando el siguiente Contexto, responde la
-    Pregunta. Imagina que trabajas en un museo y estás respondiendo cordialmente
+    augmented_prompt = f"""<s>[INST] Utilizando el siguiente contexto, responde la
+    pregunta. Si no sabes la respuesta, responde que no sabes, no intentes inventar una respuesta.
+    Imagina que trabajas en un museo y estás respondiendo cordialmente
     las preguntas de los visitantes. Responde saludando en nombre de
     La Casa Museo El Santuario y agradeciendo por preguntar.
     Responde la pregunta en español.
 
-    Contexto:
+    contexto:
     {source_knowledge}
 
-    Pregunta:
-    {query}"""
+    pregunta:
+    {query}[/INST]"""
 
     documents_prompt = f"""La información fue obtenida de los siguientes documentos:
     {documents}
