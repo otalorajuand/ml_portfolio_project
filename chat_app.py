@@ -4,8 +4,8 @@ import time
 st.set_page_config(
     page_title="Pregúntale a La Casa Museo", page_icon=":house:")
 
-from prompt_generation.output_generator import output_generator
-from prompt_generation.augmented_prompt import augment_prompt_generator
+from prompt_generation.llm import Llm
+from prompt_generation.augmented_prompt import AugmentedPrompt
 
 
 st.title("Pregúntale a La Casa Museo :house:")
@@ -34,10 +34,15 @@ if prompt := st.chat_input("Haznos una pregunta"):
         message_placeholder = st.empty()
         full_response = ""
         with st.spinner("Generando respuesta..."):
-            augment_prompt, documents = augment_prompt_generator(prompt)
-            output = output_generator(augment_prompt)
+            augmented_prompt_instance = AugmentedPrompt(prompt)
+            augment_prompt = augmented_prompt_instance.augmented_prompt
+            documents = augmented_prompt_instance.documents_prompt
+            st.write(augment_prompt)
+
+            llm_instace = Llm(augment_prompt)
+            llm_output = llm_instace.output
             try:
-                assistant_response = output[0]["generated_text"][len(augment_prompt)+1:]
+                assistant_response = llm_output[0]["generated_text"][len(augment_prompt)+1:]
             except:
                 st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
                 stop = 1
