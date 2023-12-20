@@ -7,7 +7,15 @@ with open('prompt_generation/config.yml', 'r') as file:
     config = yaml.safe_load(file)
 
 class Llm:
+    """This class models the llm usage"""
+
     def __init__(self, prompt):
+        """
+        Initializes an instance of the Llm class with the provided prompt.
+
+        Args:
+        - prompt: A string representing the input prompt for generating output.
+        """
         self.output = self.output_generator(prompt)
         
 

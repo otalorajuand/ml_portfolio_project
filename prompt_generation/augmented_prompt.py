@@ -9,7 +9,20 @@ with open('prompt_generation/config.yml', 'r') as file:
 top_k = config['top_k']
 
 class AugmentedPrompt:
+    """This class models the augmented prompt and documents prompt"""
+
     def __init__(self, query):
+      """
+        Initializes an AugmentedPrompt instance.
+
+        Args:
+        - query (str): The query or question to be used in generating the augmented prompt.
+
+        Attributes:
+        - query (str): The query or question provided during initialization.
+        - augmented_prompt (str): The augmented prompt incorporating context and query.
+        - documents_prompt (str): Information about the documents used in generating the context.
+      """
       self.query = query
       self.augmented_prompt, self.documents_prompt = self.augment_prompt_generator()
 

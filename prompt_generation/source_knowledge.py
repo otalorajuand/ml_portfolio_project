@@ -9,7 +9,24 @@ with open('prompt_generation/config.yml', 'r') as file:
 
 
 class SourceKnowledge:
+    """This class models the source knowledge to feed the augmented prompt"""
+
     def __init__(self, query, top_k):
+        """
+        Initializes a SourceKnowledge object.
+
+        Args:
+        - query: Torch tensor or array containing embeddings of the query
+        - top_k: Integer specifying the top-k results to retrieve
+
+        Attributes:
+        - query: Torch tensor or array containing embeddings of the query
+        - dataset: Pandas DataFrame representing the loaded dataset
+        - embeddings_dataset: Torch Tensor representing the embeddings dataset derived from the input dataset
+        - top_k: Integer specifying the top-k results to retrieve
+        - source_knowledge: String containing concatenated results from 'new_column' based on the retrieved top-k indices
+        - documents: String containing a bullet-pointed list of unique document titles extracted from 'title' column
+        """
         self.query = query
         self.dataset = self.load_data()
         self.embeddings_dataset = self.dataset_embbedings_generator(self.dataset)

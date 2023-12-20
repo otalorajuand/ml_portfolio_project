@@ -7,7 +7,19 @@ with open('prompt_generation/config.yml', 'r') as file:
 
 
 class Query:
+    """This class models a query and its embedding projection"""
+
     def __init__(self, query):
+        """
+        Initializes the Query object with the provided query text.
+
+        Args:
+        - query (str): The query text for which embeddings will be generated.
+
+        Attributes:
+        - query (str): The query text provided.
+        - embedded_query: The generated embeddings for the query text.
+        """
         self.query = query
         self.embedded_query = self.query_embedding()
 
