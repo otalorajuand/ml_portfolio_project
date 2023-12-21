@@ -34,10 +34,9 @@ if prompt := st.chat_input("Haznos una pregunta"):
         message_placeholder = st.empty()
         full_response = ""
         with st.spinner("Generando respuesta..."):
-            augmented_prompt_instance = AugmentedPrompt(prompt)
+            augmented_prompt_instance = AugmentedPrompt(prompt, "data_santuario")
             augment_prompt = augmented_prompt_instance.augmented_prompt
             documents = augmented_prompt_instance.documents_prompt
-            st.write(augment_prompt)
 
             llm_instace = Llm(augment_prompt)
             llm_output = llm_instace.output

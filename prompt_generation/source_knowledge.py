@@ -11,7 +11,7 @@ with open('prompt_generation/config.yml', 'r') as file:
 class SourceKnowledge:
     """This class models the source knowledge to feed the augmented prompt"""
 
-    def __init__(self, query, top_k):
+    def __init__(self, query, top_k, data_source):
         """
         Initializes a SourceKnowledge object.
 
@@ -28,7 +28,8 @@ class SourceKnowledge:
         - documents: String containing a bullet-pointed list of unique document titles extracted from 'title' column
         """
         self.query = query
-        self.dataset = self.load_data()
+        self.data_source = data_source
+        self.dataset = self.load_data(data_source)
         self.embeddings_dataset = self.dataset_embbedings_generator(self.dataset)
         self.top_k = top_k
         self.source_knowledge, self.documents = self.source_knowledge_generator()
@@ -36,7 +37,7 @@ class SourceKnowledge:
 
     @staticmethod
     @st.cache_data(show_spinner=False)
-    def load_data():
+    def load_data(data_source):
         """Loads and returns a dataset from a specified data URL using
         Hugging Face's datasets library.
 
@@ -45,9 +46,9 @@ class SourceKnowledge:
         """
 
         data_url = config['data_url']
+
         dataset = load_dataset(
-            data_url,
-            split="train").to_pandas()
+            data_url, data_source)['train'].to_pandas()
         return dataset
 
     @staticmethod
