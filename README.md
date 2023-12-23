@@ -1,6 +1,7 @@
 # Retrieval Augmented Generation (RAG) System for Question Answering for The House Museum El Santuario
 
 ![Contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portofolio_project)
+![GitHub contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portofolio_project)
 ![Forks](https://img.shields.io/github/forks/otalorajuand/ml_portfolio_project)
 ![Stars](https://img.shields.io/github/stars/otalorajuand/ml_portfolio_project)
 ![Licence](https://img.shields.io/github/license/otalorajuand/ml_portfolio_project)
