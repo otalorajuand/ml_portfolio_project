@@ -25,33 +25,33 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 ### Files
 
-#### Backend
+### App
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `app.py` | home | Controller of the app. The main file which executes the app. |
-| `db.py`  | config  | Creates the connection to the database. |
-| `setup_mysql.sql` | database   | Creates the database and the user. |
-| `affinity_data_structuring.py` | etl | Structures the connections data to fit the database table. |
-| `investors_data_structuring.py` | etl | Structures the investors data to fit the database table. |
-| `consolidate.py` | models | Creates the investors and connections tables in SQLAlchemy. |
-| `insert_investors_db.py` | models | Inserts the investors data into the database. |
-| `insert_connections.py` | models | Inserts the connections data into the database. |
-| `consolidated_routes.py` | routes  | Defines the CRUD for the investors in the API. |
-| `connection_routes.py` | routes |  Defines the CRUD for the connections in the API. |
-| `investors.py` | schemas  | Defines the schema for an investors object for the API. |
-| `connections.py` | schemas | Defines the schema for an connections object for the API. |
+| `Hello.py` | root |  |
+| `1_Data_Museo.py` | root |  |
+| `2_Data_Santuario.py` | root |  |
 
-#### Frontend
+
+#### Prompt Generation
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `index.html` | public | Base HTML file of the DOM. |
-| `App.js` | src | Controller file for the components. |
-| `index.js` | src | Creates all the react components based on id in HTML. |
-| `table.js` | src | File that contains the table and the filters. |
-| `/components` | src | Directory that contains the individual components. |
-| `/style` | src  | Directory that contains the CSS files and pictures. |
+| `augmented_prompt.py` | prompt_generation | Defines the class AugmentedPrompt which generates the context-based augmented prompt and associated document information to answer queries. |
+| `llm.py`  | prompt_generation  | Defines the class 'Llm' which enables output generation based on provided prompts using specified LLM model parameters. |
+| `query.py` | prompt_generation   | Defines the class 'Query' which generates embeddings for a provided query." |
+| `source_knowledge.py` | prompt_generation | Defines a Python class SourceKnowledge that models the source knowledge for feeding augmented prompts. It facilitates dataset loading, generates embeddings from input data, and retrieves relevant knowledge based on a specified query using Semantic Search, presenting it as concatenated text results and a bullet-pointed list of unique document titles extracted from a specified dataset. |
+
+
+#### Data Preprocessing
+
+| File  | Directory  | Description |
+| :------ |:--------------| :---------------------|
+| `create_data_dict.py` | data_preproccesing |  |
+| `embedding.py` | data_preproccesing |  |
+| `pdf_text_chunk.py` | data_preproccesing |  |
+| `process_data.py` | data_preproccesing |  |
 
 ## How to Install and Run the Project
 
@@ -68,4 +68,8 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 
 ## Author
 
-<a href = 'https://www.twitter.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/dagarciaz?t=SsP1iYjxXsK7z9nBZxwSvQ&s=08) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
+<a href = 'https://www.github.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a>  [@Juan David Otálora](https://github.com/otalorajuand)
+
+<a href = 'https://www.twitter.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a>  [@Juan David Otálora](https://twitter.com/juandotalora)
+
+<a href = 'https://www.linkedin.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"/></a> [@Juan David Otálora](https://www.linkedin.com/in/juan-david-ot%C3%A1lora-carrillo-7a6599172/)
