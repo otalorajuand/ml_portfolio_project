@@ -1,20 +1,21 @@
-# Application for Visualization and Filtering of Investors and Connections for Techstars
+# Retrieval Augmented Generation (RAG) System for Question Answering for The House Museum El Santuario
 
-![Contributors](https://img.shields.io/github/contributors/capstone-project-sparck/capstone_project?style=plastic)
-![Forks](https://img.shields.io/github/forks/capstone-project-sparck/capstone_project)
-![Stars](https://img.shields.io/github/stars/capstone-project-sparck/capstone_project)
-![Licence](https://img.shields.io/github/license/capstone-project-sparck/capstone_project)
-![Issues](https://img.shields.io/github/issues/capstone-project-sparck/capstone_project)
-![Languages](https://img.shields.io/github/languages/count/capstone-project-sparck/capstone_project)
+![Contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portfolio_project?style=plastic)
+![Forks](https://img.shields.io/github/forks/otalorajuand/ml_portfolio_project)
+![Stars](https://img.shields.io/github/stars/otalorajuand/ml_portfolio_project)
+![Licence](https://img.shields.io/github/license/otalorajuand/ml_portfolio_project)
+![Issues](https://img.shields.io/github/issues/otalorajuand/ml_portfolio_project)
+![Languages](https://img.shields.io/github/languages/count/otalorajuand/ml_portfolio_project)
 
 ## Description
 
-The current project was developed with the intention of an easy way for the users of the start up Techstars to filter and find 
-investors from the database of Pitchbook and their connection from Affinity in order to contact them. The data is being stored in a MySql database and its deployed through an fastAPI API. A React frontend is used to show the data in a table and to filter it. 
+This project addresses a specific need identified at the House Museum El Santuario—a foundation dedicated to fostering cultural and educational development in El Santuario, Colombia. The primary challenge was to consolidate historical town information and administrative data within the institution. To tackle this, I devised a chat-based solution enabling users to query both these topics, receiving AI-generated responses leveraging the museum's accumulated information.
 
-We used MySql for the database for its simplicity and because we did not have a very complex data model. We found that FastAPI was the best technology for creating the API we needed for its easy maintenance and scalability. Finally, we found that React was the best fit for the frontend for its easy connection with an API. 
+The solution implemented here is a Retrieval Augmented Generation (RAG) system. Initially, I curated significant historical documents about the town's history and the institution's administrative records. Subsequently, I processed this wealth of information by segmenting it into smaller data chunks and converting it to lowercase. These segmented data chunks were then embedded into a vector space. Whenever a user submits a query, the system embeds the question into the same vector space, selects the k most relevant chunks, and supplies them as context to a Large Language Model (LLM). This contextualized information enables the LLM to craft accurate responses.
 
-We had some challenges using the Affinity API because the data of connections we needed was not available with it. We hope to solve this challenge in the future and add this feature so the data are updated. 
+One of the distinguishing features of this project is its modularized codebase, allowing for seamless switching between embedding and LM methods. I utilized the Hugging Face inference API for embedding tasks and the OpenAI ChatGPT3.5 Turbo for the LLM aspect. For the user interface, Streamlit was employed, simplifying the remote deployment of the entire project.
+
+
 
 ## Diagrams and Flow Chart
 
@@ -65,10 +66,6 @@ You first need to get into the home directoy and run the command `uvicorn app:ap
 ![Untitled-video-Made-with-Clipchamp](https://user-images.githubusercontent.com/106627368/220689993-80017813-878e-4beb-98b7-7e72aa8ff39f.gif)
 
 
-## Authors
-
-<a href = 'https://www.github.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro García](https://github.com/alejandrodgz) | [@Juan Esteban Hernandez](https://github.com/Jehp00) | [@Juan David Otálora](https://github.com/otalorajuand)
+## Author
 
 <a href = 'https://www.twitter.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro García](https://twitter.com/dagarciaz?t=SsP1iYjxXsK7z9nBZxwSvQ&s=08) | [@Juan Esteban Hernandez](https://twitter.com/0110Juanes?t=zVQP_NQVayj4JzjPc0OdQQ&s=09) | [@Juan David Otálora](https://twitter.com/juandotalora)
-
-<a href = 'https://www.linkedin.com'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"/></a> [@Alejandro García](https://www.linkedin.com/in/daniel-garcia-aa987b233/) | [@Juan Esteban Hernandez](https://www.linkedin.com/in/juan-esteban-hernandez-pedraza-254b71234) | [@Juan David Otálora](https://www.linkedin.com/in/juan-david-ot%C3%A1lora-carrillo-7a6599172/)
