@@ -1,6 +1,6 @@
 # Retrieval Augmented Generation (RAG) System for Question Answering for The House Museum El Santuario
 
-![Contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portfolio_project?style=plastic)
+![Contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portofolio_project)
 ![Forks](https://img.shields.io/github/forks/otalorajuand/ml_portfolio_project)
 ![Stars](https://img.shields.io/github/stars/otalorajuand/ml_portfolio_project)
 ![Licence](https://img.shields.io/github/license/otalorajuand/ml_portfolio_project)
@@ -41,7 +41,7 @@ One of the distinguishing features of this project is its modularized codebase, 
 | `augmented_prompt.py` | prompt_generation | Defines the class AugmentedPrompt which generates the context-based augmented prompt and associated document information to answer queries. |
 | `llm.py`  | prompt_generation  | Defines the class 'Llm' which enables output generation based on provided prompts using specified LLM model parameters. |
 | `query.py` | prompt_generation   | Defines the class 'Query' which generates embeddings for a provided query." |
-| `source_knowledge.py` | prompt_generation | Defines a Python class SourceKnowledge that models the source knowledge for feeding augmented prompts. It facilitates dataset loading, generates embeddings from input data, and retrieves relevant knowledge based on a specified query using Semantic Search, presenting it as concatenated text results and a bullet-pointed list of unique document titles extracted from a specified dataset. |
+| `source_knowledge.py` | prompt_generation | Defines a Python class 'SourceKnowledge' that models the source knowledge for feeding augmented prompts. It facilitates dataset loading, generates embeddings from input data, and retrieves relevant knowledge based on a specified query using Semantic Search, presenting it as concatenated text results and a bullet-pointed list of unique document titles extracted from a specified dataset. |
 
 
 #### Data Preprocessing
