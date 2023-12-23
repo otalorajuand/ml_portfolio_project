@@ -52,7 +52,7 @@ class SourceKnowledge:
         return dataset
 
     @staticmethod
-    @st.cache_data(show_spinner=False)
+    #@st.cache_data(show_spinner=False)
     def dataset_embbedings_generator(dataset):
         """
         Generates embeddings dataset from the input dataset.
@@ -68,6 +68,8 @@ class SourceKnowledge:
 
         not_embedding_columns = ['id', 'title', 'text_chunk', 'new_column']
         embeddings = dataset.drop(columns=not_embedding_columns)
+
+        st.write(dataset.shape)
 
         embeddings_dataset = torch.from_numpy(
             embeddings.to_numpy()).to(torch.float)

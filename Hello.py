@@ -1,9 +1,25 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
+    page_title="Home",
+    page_icon=":house:",
 )
+
+st.markdown("""
+<style>
+    .st-emotion-cache-1rtdyuf {
+        color: #FFFFFF;
+    }
+
+    .st-emotion-cache-1egp75f {
+        color: #FFFFFF;
+    }
+
+    .st-emotion-cache-1rtdyuf {
+        color: #FFFFFF;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.write("# Welcome to Streamlit! 👋")
 

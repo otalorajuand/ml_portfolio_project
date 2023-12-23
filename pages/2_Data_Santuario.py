@@ -7,6 +7,21 @@ st.set_page_config(
 from prompt_generation.llm import Llm
 from prompt_generation.augmented_prompt import AugmentedPrompt
 
+st.markdown("""
+<style>
+    .st-emotion-cache-1rtdyuf {
+        color: #FFFFFF;
+    }
+
+    .st-emotion-cache-1egp75f {
+        color: #FFFFFF;
+    }
+
+    .st-emotion-cache-1rtdyuf {
+        color: #FFFFFF;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.title("Pregúntale a La Casa Museo :house:")
 
@@ -37,6 +52,7 @@ if prompt := st.chat_input("Haznos una pregunta"):
             augmented_prompt_instance = AugmentedPrompt(prompt, "data_santuario")
             augment_prompt = augmented_prompt_instance.augmented_prompt
             documents = augmented_prompt_instance.documents_prompt
+
 
             llm_instace = Llm(augment_prompt)
             llm_output = llm_instace.output
