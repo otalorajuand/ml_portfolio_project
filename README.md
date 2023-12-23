@@ -2,10 +2,10 @@
 
 ![GitHub contributors](https://img.shields.io/github/contributors/otalorajuand/ml_portofolio_project)
 ![GitHub forks](https://img.shields.io/github/forks/otalorajuand/ml_portofolio_project)
-![Stars](https://img.shields.io/github/stars/otalorajuand/ml_portfolio_project)
-![Licence](https://img.shields.io/github/license/otalorajuand/ml_portfolio_project)
-![Issues](https://img.shields.io/github/issues/otalorajuand/ml_portfolio_project)
-![Languages](https://img.shields.io/github/languages/count/otalorajuand/ml_portfolio_project)
+![Stars](https://img.shields.io/github/stars/otalorajuand/ml_portofolio_project)
+![Licence](https://img.shields.io/github/license/otalorajuand/ml_portofolio_project)
+![Issues](https://img.shields.io/github/issues/otalorajuand/ml_portofolio_project)
+![Languages](https://img.shields.io/github/languages/count/otalorajuand/ml_portofolio_project)
 
 ## Description
 
