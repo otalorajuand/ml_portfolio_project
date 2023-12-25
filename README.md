@@ -48,10 +48,8 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `create_data_dict.py` | data_preproccesing |  |
-| `embedding.py` | data_preproccesing |  |
-| `pdf_text_chunk.py` | data_preproccesing |  |
-| `process_data.py` | data_preproccesing |  |
+| `data_processing.py` | data_preproccesing | Defines the class 'DataProcessing' which extracts, tranforms and exports a csv file with the data to feed the database. |
+| `process_data.py` | data_preproccesing | The main file that executes the data preprocessing. |
 
 ## How to Install and Run the Project
 
