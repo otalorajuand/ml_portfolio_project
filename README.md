@@ -29,9 +29,9 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `Hello.py` | root |  |
-| `1_Data_Museo.py` | root |  |
-| `2_Data_Santuario.py` | root |  |
+| `Hello.py` | root | Main file to execute the app. |
+| `1_Data_Museo.py` | pages | Page containing the chat for questions related to the museum. |
+| `2_Data_Santuario.py` | pages | Page containing the chat for questions related to the town's history. |
 
 
 #### Prompt Generation
@@ -40,7 +40,7 @@ One of the distinguishing features of this project is its modularized codebase, 
 | :------ |:--------------| :---------------------|
 | `augmented_prompt.py` | prompt_generation | Defines the class AugmentedPrompt which generates the context-based augmented prompt and associated document information to answer queries. |
 | `llm.py`  | prompt_generation  | Defines the class 'Llm' which enables output generation based on provided prompts using specified LLM model parameters. |
-| `query.py` | prompt_generation   | Defines the class 'Query' which generates embeddings for a provided query." |
+| `query.py` | prompt_generation | Defines the class 'Query' which generates embeddings for a provided query." |
 | `source_knowledge.py` | prompt_generation | Defines a Python class 'SourceKnowledge' that models the source knowledge for feeding augmented prompts. It facilitates dataset loading, generates embeddings from input data, and retrieves relevant knowledge based on a specified query using Semantic Search, presenting it as concatenated text results and a bullet-pointed list of unique document titles extracted from a specified dataset. |
 
 
@@ -53,11 +53,11 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 ## How to Install and Run the Project
 
-In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Activate the virtual environment with the command `source <name of the environment>/bin/activate`. Then you need to install the requirements with the command `pip install -r requirements.txt`. Finally you need to get inside the front directoy and install the react dependencies with the command `npm install`.
+In order to install and run the project, you first need to clone the repository. Then, you need to create a Python Virtual Environment with the command `venv <name of the environment>`. Activate the virtual environment with the command `source <name of the environment>/bin/activate`. Then you need to install the requirements with the command `pip install -r requirements.txt`.
 
-Once you have installed all the dependencies, you need to create the database and the user executing the file `set_up.sql` with the command `cat database/setup_mysql.sql | mysql`. Then you need to create the tables with the command `python models/consolidate.py`. Finally, you need to insert the data executing the following commands in order, `python models/insert_investors_db.py` and then `python models/insert_connections.py`. This process has to be done only the first time you are installing the project.
+Once you have installed all the dependencies, you need to create the database and upload the file into the huggingface hub. In order to run the main file for the data preprocessing you need to run the following command `python3 data_preproccesing/data_processing.py`. Once the csv file is created, you need to upload it the hf hub. 
 
-You first need to get into the home directoy and run the command `uvicorn app:app` to run the API. Finally, get inside the front directory in another terminal and run the command `npm start` to run the front. 
+Then, you can run the app with the command `streamlit run app.py` and a new window will open with it. You can also deploy it using the streamlit cloud service.s
 
 ## How to Use the Project
 
