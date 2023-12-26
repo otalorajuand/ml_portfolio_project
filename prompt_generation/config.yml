@@ -12,7 +12,8 @@ model_params:
   repetition_penalty: 1.2
 
 #embedding model name
-embedding_model_name: "sentence-transformers/all-mpnet-base-v2"
+#sentence-transformers/all-mpnet-base-v2
+embedding_model_name: "sentence-transformers/all-MiniLM-L6-v2"
 
 # the url of the dataset
-data_url: 'otalorajuand/embedding_test'
+data_url: 'otalorajuand/data_house_museum'

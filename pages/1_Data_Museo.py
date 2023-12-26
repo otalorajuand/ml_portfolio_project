@@ -53,6 +53,8 @@ if prompt := st.chat_input("Haznos una pregunta"):
             augment_prompt = augmented_prompt_instance.augmented_prompt
             documents = augmented_prompt_instance.documents_prompt
 
+            st.write(augment_prompt)
+
             llm_instace = Llm(augment_prompt)
             llm_output = llm_instace.output
             #assistant_response = llm_output

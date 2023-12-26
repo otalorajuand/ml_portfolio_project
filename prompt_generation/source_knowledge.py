@@ -48,7 +48,9 @@ class SourceKnowledge:
         data_url = config['data_url']
 
         dataset = load_dataset(
-            data_url, data_source)['train'].to_pandas()
+            data_url, data_source,
+            download_mode='force_redownload', 
+            ignore_verifications=True)['train'].to_pandas()
         return dataset
 
     @staticmethod
