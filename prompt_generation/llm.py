@@ -16,7 +16,9 @@ class Llm:
         Args:
         - prompt: A string representing the input prompt for generating output.
         """
+        self.stop = 0
         self.output = self.output_generator(prompt)
+        
         
 
     @staticmethod
@@ -59,4 +61,10 @@ class Llm:
             "parameters": {**model_kwargs}
         })
 
-        return output
+        try:
+            assistant_response = output[0]["generated_text"][len(prompt)+1:]
+        except:
+            st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
+            self.stop = 1
+
+        return assistant_response

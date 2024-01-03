@@ -45,7 +45,6 @@ if prompt := st.chat_input("Haznos una pregunta"):
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        stop = 0
         message_placeholder = st.empty()
         full_response = ""
         with st.spinner("Generando respuesta..."):
@@ -53,22 +52,14 @@ if prompt := st.chat_input("Haznos una pregunta"):
             augment_prompt = augmented_prompt_instance.augmented_prompt
             documents = augmented_prompt_instance.documents_prompt
 
-            st.write(augment_prompt)
-
             llm_instace = Llm(augment_prompt)
             llm_output = llm_instace.output
-            #assistant_response = llm_output
-            try:
-                assistant_response = llm_output[0]["generated_text"][len(augment_prompt)+1:]
-            except:
-                st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
-                stop = 1
 
-        if stop == 1:
+        if llm_instace.stop == 1:
             st.stop()
 
         # Simulate stream of response with milliseconds delay
-        for chunk in assistant_response.split():
+        for chunk in llm_output.split():
             full_response += chunk + " "
             time.sleep(0.05)
             # Add a blinking cursor to simulate typing
