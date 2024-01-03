@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../holbertonschool-machine_learning/reinforcement_learning/temporal_difference"
+		},
+		{
+			"path": "../../holbertonschool-machine_learning/pipeline/data_augmentation"
+		}
+	],
+	"settings": {}
+}

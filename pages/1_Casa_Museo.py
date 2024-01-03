@@ -26,11 +26,11 @@ st.markdown("""
 st.title("Pregúntale a La Casa Museo :house:")
 
 # Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+if "messages_museum" not in st.session_state:
+    st.session_state.messages_museum = []
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
+for message in st.session_state.messages_museum:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         st.caption(message["documents"])
@@ -38,7 +38,7 @@ for message in st.session_state.messages:
 # Accept user input
 if prompt := st.chat_input("Haznos una pregunta"):
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt, "documents": ""})
+    st.session_state.messages_museum.append({"role": "user", "content": prompt, "documents": ""})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -76,5 +76,5 @@ if prompt := st.chat_input("Haznos una pregunta"):
         message_placeholder.markdown(full_response)
         st.caption(documents)
     # Add assistant response to chat history
-    st.session_state.messages.append(
+    st.session_state.messages_museum.append(
         {"role": "assistant", "content": full_response, "documents": documents})
