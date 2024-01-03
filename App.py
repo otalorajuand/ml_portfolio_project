@@ -21,6 +21,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.image('casa_museo.png')
+
 st.write("# Bienvenido al chat de La Casa Museo El Santuario! 👋")
 
 st.markdown(
