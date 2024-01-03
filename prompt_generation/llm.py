@@ -66,5 +66,6 @@ class Llm:
         except:
             st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
             self.stop = 1
+            return ''
 
         return assistant_response

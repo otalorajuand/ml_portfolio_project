@@ -1,13 +1,8 @@
-import requests
 import streamlit as st
-import yaml
-from llamaapi import LlamaAPI
-import json
+from bardapi import Bard
 
 
 hf_token = st.secrets['HF_TOKEN']
-with open('prompt_generation/config.yml', 'r') as file:
-    config = yaml.safe_load(file)
 
 class Llm:
     """This class models the llm usage"""
@@ -19,6 +14,7 @@ class Llm:
         Args:
         - prompt: A string representing the input prompt for generating output.
         """
+        self.stop = 0
         self.output = self.output_generator(prompt)
 
     def output_generator(self, prompt):
@@ -31,16 +27,15 @@ class Llm:
         Returns:
         - output: generated output based on the input prompt and model parameters
         """
-        api_token = "LL-7V3u02Tx2rlG9ktrLeLAI8JsmJyPaDxRLfKCkvLrVYvCSdsiint2ivcr4S40kWUt"
+        api_token = 'egjoA8TniHD92Xa2DUPYWioNUa53HZ8qDGdMPtS_rc6Wcz42Thi3gGtFg1SGBJ-QPtrlpA.'
 
-        llama = LlamaAPI(api_token)
+        bard = Bard(token=api_token)
 
-        api_request_json = {
-            'model': 'llama-70b-chat',
-            "messages": [
-        {"role": "user", "content": prompt},
-        ]}
+        try:
+            response = bard.get_answer(prompt)
+        except:
+            st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
+            self.stop = 1
+            return ''
 
-        response = llama.run(api_request_json)
-
-        return response.json()['choices'][0]['message']['content']
+        return response['content']

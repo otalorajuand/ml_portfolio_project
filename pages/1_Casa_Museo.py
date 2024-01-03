@@ -4,7 +4,7 @@ import time
 st.set_page_config(
     page_title="Pregúntale a La Casa Museo", page_icon=":house:")
 
-from prompt_generation.llm import Llm
+from prompt_generation.llm_2 import Llm
 from prompt_generation.augmented_prompt import AugmentedPrompt
 
 st.markdown("""
