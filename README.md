@@ -19,9 +19,8 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 ## Diagrams and Flow Chart
 
-![higher_level](https://user-images.githubusercontent.com/22607461/218857148-9e2e8025-ff18-408a-b8f7-93c5c3cd9825.jpeg)
-![medium-level](https://user-images.githubusercontent.com/22607461/218857302-9073a781-60f7-4f6c-88a0-07846c71f6af.jpeg)
-![diagrama_de_archivos](https://user-images.githubusercontent.com/22607461/219759319-dee60c42-4da5-49e4-bd45-e5d98e29acde.jpeg)
+![diagrama_1](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/6f2eaeaa-ce6e-4a07-a834-09495397884a)
+![llm_diagram](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/f4850c7e-b9c2-4413-a75f-fe69081d4efb)
 
 ### Files
 
@@ -61,7 +60,8 @@ Then, you can run the app with the command `streamlit run app.py` and a new wind
 
 ## How to Use the Project
 
-![Untitled-video-Made-with-Clipchamp](https://user-images.githubusercontent.com/106627368/220689993-80017813-878e-4beb-98b7-7e72aa8ff39f.gif)
+![ezgif com-video-to-gif-converter](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/5bdfe613-0ec3-4ef2-8047-7de20db55f9e)
+
 
 
 ## Author
