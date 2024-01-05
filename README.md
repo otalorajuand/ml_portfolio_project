@@ -21,6 +21,7 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 ![diagrama_1](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/6f2eaeaa-ce6e-4a07-a834-09495397884a)
 ![llm_diagram](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/f4850c7e-b9c2-4413-a75f-fe69081d4efb)
+![rag_diagram](https://github.com/otalorajuand/ml_portfolio_project/assets/22607461/8ed88a70-5376-45b5-8a2d-72e754831fb0)
 
 ### Files
 
@@ -28,9 +29,9 @@ One of the distinguishing features of this project is its modularized codebase, 
 
 | File  | Directory  | Description |
 | :------ |:--------------| :---------------------|
-| `Hello.py` | root | Main file to execute the app. |
-| `1_Data_Museo.py` | pages | Page containing the chat for questions related to the museum. |
-| `2_Data_Santuario.py` | pages | Page containing the chat for questions related to the town's history. |
+| `Home.py` | root | Main file to execute the app. |
+| `1_Casa_Museo.py` | pages | Page containing the chat for questions related to the museum. |
+| `2_Historia_Santuario.py` | pages | Page containing the chat for questions related to the town's history. |
 
 
 #### Prompt Generation
