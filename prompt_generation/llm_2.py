@@ -27,15 +27,14 @@ class Llm:
         Returns:
         - output: generated output based on the input prompt and model parameters
         """
-        api_token = 'egjoA8TniHD92Xa2DUPYWioNUa53HZ8qDGdMPtS_rc6Wcz42Thi3gGtFg1SGBJ-QPtrlpA.'
-
-        bard = Bard(token=api_token)
+        api_token = 'ewjoA8hY8RZ_62-N79O5jlkPt-ksX_0nUxR2_HWLsDx8_QpisSDaXXB4meClz3ZxBR8JeA.'
 
         try:
+            bard = Bard(token=api_token)
             response = bard.get_answer(prompt)
         except:
             st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
             self.stop = 1
             return ''
 
-        return response['content']
+        return response['content'].replace('*','')
