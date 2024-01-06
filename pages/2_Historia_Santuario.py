@@ -4,7 +4,7 @@ import time
 st.set_page_config(
     page_title="Pregúntale a La Casa Museo", page_icon=":house:")
 
-from prompt_generation.llm_2 import Llm
+from prompt_generation.llm import Llm
 from prompt_generation.augmented_prompt import AugmentedPrompt
 
 st.markdown("""
@@ -52,7 +52,7 @@ if prompt := st.chat_input("Haznos una pregunta"):
             augment_prompt = augmented_prompt_instance.augmented_prompt
             documents = augmented_prompt_instance.documents_prompt
 
-            llm_instace = Llm(augment_prompt)
+            llm_instace = Llm(augment_prompt, model='bard')
             llm_output = llm_instace.output
 
         if llm_instace.stop == 1:

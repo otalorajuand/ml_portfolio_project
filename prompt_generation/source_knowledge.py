@@ -50,7 +50,7 @@ class SourceKnowledge:
         dataset = load_dataset(
             data_url, data_source,
             download_mode='force_redownload', 
-            ignore_verifications=True)['train'].to_pandas()
+            verification_mode='no_checks')['train'].to_pandas()
         return dataset
 
     @staticmethod
