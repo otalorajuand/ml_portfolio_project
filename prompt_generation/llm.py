@@ -2,10 +2,16 @@ import requests
 import streamlit as st
 import yaml
 from bardapi import Bard
+from langchain.chat_models import ChatOpenAI
+from langchain.schema import (
+    HumanMessage
+)
+
 
 
 hf_token = st.secrets['HF_TOKEN']
 bard_token = st.secrets['BARD_TOKEN']
+openai_token = st.secrets['OPENAI_TOKEN']
 with open('prompt_generation/config.yml', 'r') as file:
     config = yaml.safe_load(file)
 
@@ -94,11 +100,37 @@ class Llm:
 
         return response['content'].replace('*','')
     
+    def output_generator_openai(self, prompt):
+        """
+        Generates output using a query function with specific model parameters.
+
+        Args:
+        - prompt: a string or input prompt to generate output
+
+        Returns:
+        - output: generated output based on the input prompt and model parameters
+        """
+
+        try:
+            chat = ChatOpenAI(
+                openai_api_key=openai_token,
+                model='gpt-3.5-turbo'
+            )
+            messages = [HumanMessage(content=prompt)]
+            response = chat(messages)
+        except:
+            st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
+            self.stop = 1
+            return ''
+
+        return response.content
+    
     def llm_selector(self, model):
 
         models_dict = {
             'hf': self.output_generator_hf,
-            'bard': self.output_generator_bard
+            'bard': self.output_generator_bard,
+            'openai': self.output_generator_openai
         }
 
         return models_dict[model]
