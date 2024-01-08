@@ -8,27 +8,27 @@ with open('prompt_generation/config.yml', 'r') as file:
 
 top_k = config['top_k']
 
+
 class AugmentedPrompt:
     """This class models the augmented prompt and documents prompt"""
 
     def __init__(self, query, data_source):
-      """
-        Initializes an AugmentedPrompt instance.
+        """
+          Initializes an AugmentedPrompt instance.
 
-        Args:
-        - query (str): The query or question to be used in generating the augmented prompt.
+          Args:
+          - query (str): The query or question to be used in generating the augmented prompt.
 
-        Attributes:
-        - query (str): The query or question provided during initialization.
-        - augmented_prompt (str): The augmented prompt incorporating context and query.
-        - documents_prompt (str): Information about the documents used in generating the context.
-      """
-      self.query = query
-      self.data_source = data_source
-      self.augmented_prompt, self.documents_prompt = self.augment_prompt_generator()
+          Attributes:
+          - query (str): The query or question provided during initialization.
+          - augmented_prompt (str): The augmented prompt incorporating context and query.
+          - documents_prompt (str): Information about the documents used in generating the context.
+        """
+        self.query = query
+        self.data_source = data_source
+        self.augmented_prompt, self.documents_prompt = self.augment_prompt_generator()
 
     def augment_prompt_generator(self):
-        
         """
         Generates an augmented prompt for question answering in a museum context.
 
@@ -40,7 +40,8 @@ class AugmentedPrompt:
         """
 
         query_instance = Query(self.query)
-        source_knowledge_instace = SourceKnowledge(query_instance, top_k, self.data_source)
+        source_knowledge_instace = SourceKnowledge(
+            query_instance, top_k, self.data_source)
 
         # feed into an augmented prompt
         augmented_prompt = f"""<s>[INST] Utilizando el siguiente contexto, responde la

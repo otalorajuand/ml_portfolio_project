@@ -8,12 +8,12 @@ from langchain.schema import (
 )
 
 
-
 hf_token = st.secrets['HF_TOKEN']
 bard_token = st.secrets['BARD_TOKEN']
 openai_token = st.secrets['OPENAI_TOKEN']
 with open('prompt_generation/config.yml', 'r') as file:
     config = yaml.safe_load(file)
+
 
 class Llm:
     """This class models the llm usage"""
@@ -27,8 +27,6 @@ class Llm:
         """
         self.stop = 0
         self.output = self.llm_selector(model)(prompt)
-        
-        
 
     @staticmethod
     @st.cache_data(show_spinner=False)
@@ -71,14 +69,14 @@ class Llm:
         })
 
         try:
-            assistant_response = output[0]["generated_text"][len(prompt)+1:]
-        except:
+            assistant_response = output[0]["generated_text"][len(prompt) + 1:]
+        except BaseException:
             st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
             self.stop = 1
             return ''
 
         return assistant_response
-    
+
     def output_generator_bard(self, prompt):
         """
         Generates output using a query function with specific model parameters.
@@ -93,13 +91,13 @@ class Llm:
         try:
             bard = Bard(token=bard_token)
             response = bard.get_answer(prompt)
-        except:
+        except BaseException:
             st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
             self.stop = 1
             return ''
 
-        return response['content'].replace('*','')
-    
+        return response['content'].replace('*', '')
+
     def output_generator_openai(self, prompt):
         """
         Generates output using a query function with specific model parameters.
@@ -118,14 +116,26 @@ class Llm:
             )
             messages = [HumanMessage(content=prompt)]
             response = chat(messages)
-        except:
+        except BaseException:
             st.error('Revisa tu conexión a internet. Inténtalo más tarde.')
             self.stop = 1
             return ''
 
         return response.content
-    
+
     def llm_selector(self, model):
+        """
+        Selects the appropriate output generator method based on the
+        provided model.
+
+        Args:
+        - model: A string specifying the chosen model for generating output
+          ('hf', 'bard', 'openai').
+
+        Returns:
+        - output_generator: Corresponding method to generate output based
+          on the specified model.
+        """
 
         models_dict = {
             'hf': self.output_generator_hf,
@@ -133,4 +143,6 @@ class Llm:
             'openai': self.output_generator_openai
         }
 
-        return models_dict[model]
+        output_generator = models_dict[model]
+
+        return output_generator

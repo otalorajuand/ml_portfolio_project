@@ -30,10 +30,10 @@ class SourceKnowledge:
         self.query = query
         self.data_source = data_source
         self.dataset = self.load_data(data_source)
-        self.embeddings_dataset = self.dataset_embbedings_generator(self.dataset)
+        self.embeddings_dataset = self.dataset_embbedings_generator(
+            self.dataset)
         self.top_k = top_k
         self.source_knowledge, self.documents = self.source_knowledge_generator()
-
 
     @staticmethod
     @st.cache_data(show_spinner=False)
@@ -49,12 +49,12 @@ class SourceKnowledge:
 
         dataset = load_dataset(
             data_url, data_source,
-            download_mode='force_redownload', 
+            download_mode='force_redownload',
             verification_mode='no_checks')['train'].to_pandas()
         return dataset
 
     @staticmethod
-    #@st.cache_data(show_spinner=False)
+    # @st.cache_data(show_spinner=False)
     def dataset_embbedings_generator(dataset):
         """
         Generates embeddings dataset from the input dataset.
@@ -75,7 +75,6 @@ class SourceKnowledge:
             embeddings.to_numpy()).to(torch.float)
 
         return embeddings_dataset
-    
 
     def source_knowledge_generator(self):
         """
@@ -100,7 +99,10 @@ class SourceKnowledge:
         # source_knowledge generation
         embedded_query = self.query.embedded_query
         query_embeddings = torch.FloatTensor(embedded_query)
-        hits = semantic_search(query_embeddings, self.embeddings_dataset, top_k=self.top_k)
+        hits = semantic_search(
+            query_embeddings,
+            self.embeddings_dataset,
+            top_k=self.top_k)
         selected_rows = [hits[0][i]['corpus_id'] for i in range(len(hits[0]))]
         results = self.dataset.loc[selected_rows, [
             'new_column']].values.tolist()
@@ -109,7 +111,8 @@ class SourceKnowledge:
         # get the text from the results
         source_knowledge = "\n\n".join([x[0] for x in results])
 
-        unique_documents = list(set([x[0].replace(".pdf", "") for x in documents]))
+        unique_documents = list(
+            set([x[0].replace(".pdf", "") for x in documents]))
         documents_list = "\n".join([f"• {item}" for item in unique_documents])
 
         return source_knowledge, documents_list

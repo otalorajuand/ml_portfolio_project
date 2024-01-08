@@ -4,12 +4,12 @@ import requests
 import pandas as pd
 import torch
 from dotenv import load_dotenv
-from sentence_transformers.util import semantic_search
 import yaml
 
 
 class DataProcessing:
-    """Handles data processing operations including PDF text extraction, chunking, and embeddings"""
+    """Handles data processing operations including PDF text extraction,
+      chunking, and embeddings"""
 
     def __init__(self, config_path='config.yml'):
         load_dotenv()
@@ -29,7 +29,7 @@ class DataProcessing:
         - chunk_size (int): The maximum size of each chunk in terms of characters.
 
         Returns:
-        - chunks (list): A list of chunks where each chunk is a string not 
+        - chunks (list): A list of chunks where each chunk is a string not
         exceeding the chunk size.
         """
         chunks = []
@@ -55,7 +55,7 @@ class DataProcessing:
 
         Returns:
         - A list containing information about text chunks extracted from the PDF.
-        Each element in the list represents a chunk and its associated 
+        Each element in the list represents a chunk and its associated
         information.
         """
 
@@ -89,7 +89,8 @@ class DataProcessing:
         for filename in os.listdir(directory_path):
             if filename.endswith('.pdf'):
                 file_path = os.path.join(directory_path, filename)
-                chunks_info = self.extract_and_chunk_text(file_path, chunk_size)
+                chunks_info = self.extract_and_chunk_text(
+                    file_path, chunk_size)
                 for chunk_text in chunks_info:
 
                     file_info = {
@@ -130,7 +131,7 @@ class DataProcessing:
         data['new_column'] = data.title + ' - ' + data.text_chunk.str.lower()
 
         texts = list(data.new_column)
-        
+
         output_list = []
         step = 50
         for i in range(0, len(texts), step):
@@ -160,7 +161,6 @@ class DataProcessing:
         max_chunk_size = self.config['max_chunk_size']
         min_chunk_size = self.config['min_chunk_size']
 
-        data_dict = self.process_directory(directory_path, max_chunk_size, min_chunk_size)
+        data_dict = self.process_directory(
+            directory_path, max_chunk_size, min_chunk_size)
         self.embedding_dict_to_dataframe(data_dict)
-
-
