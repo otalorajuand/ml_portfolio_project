@@ -22,10 +22,13 @@ class SourceKnowledge:
         Attributes:
         - query: Torch tensor or array containing embeddings of the query
         - dataset: Pandas DataFrame representing the loaded dataset
-        - embeddings_dataset: Torch Tensor representing the embeddings dataset derived from the input dataset
+        - embeddings_dataset: Torch Tensor representing the embeddings dataset
+          derived from the input dataset
         - top_k: Integer specifying the top-k results to retrieve
-        - source_knowledge: String containing concatenated results from 'new_column' based on the retrieved top-k indices
-        - documents: String containing a bullet-pointed list of unique document titles extracted from 'title' column
+        - source_knowledge: String containing concatenated results from
+          'new_column' based on the retrieved top-k indices
+        - documents: String containing a bullet-pointed list of unique document
+          titles extracted from 'title' column
         """
         self.query = query
         self.data_source = data_source
@@ -60,7 +63,8 @@ class SourceKnowledge:
         Generates embeddings dataset from the input dataset.
 
         Args:
-        - dataset: Pandas DataFrame containing the dataset for embedding generation.
+        - dataset: Pandas DataFrame containing the dataset for
+          embedding generation.
 
         Returns:
         - embeddings_dataset: Torch Tensor representing the embeddings dataset

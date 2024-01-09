@@ -38,7 +38,9 @@ for message in st.session_state.messages_museum:
 # Accept user input
 if prompt := st.chat_input("Haznos una pregunta"):
     # Add user message to chat history
-    st.session_state.messages_museum.append({"role": "user", "content": prompt, "documents": ""})
+    st.session_state.messages_museum.append({"role": "user", 
+                                             "content": prompt, 
+                                             "documents": ""})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(prompt)
